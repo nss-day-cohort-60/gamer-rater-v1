@@ -2,5 +2,8 @@
     "python.linting.pylintArgs": [
         "--load-plugins=pylint_django",
         "--django-settings-module=gamerrater.settings",
-    ]
+    ],
+    "editor.tabSize": 4,
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
 }

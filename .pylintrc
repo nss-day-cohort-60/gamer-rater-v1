@@ -1,8 +1,8 @@
-[FORMAT] 
+[FORMAT]
   good-names=i,j,ex,pk
 
 [MESSAGES CONTROL]
-  disable=broad-except,imported-auth-user,missing-class-docstring,no-self-use,abstract-method
+  disable=broad-except,imported-auth-user,missing-class-docstring,no-self-use,abstract-method,line-too-long,useless-option-value,missing-function-docstring
 
 [MASTER]
   disable=C0114,
