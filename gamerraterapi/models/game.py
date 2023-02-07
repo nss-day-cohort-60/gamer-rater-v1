@@ -12,3 +12,4 @@ class Game(models.Model):
     max_players = models.IntegerField()
     estimated_time = models.FloatField() #dont yell at Sydney, coach, thanks.
     recommended_age = models.IntegerField()
+    categories = models.ManyToManyField("Category", through="GameCategory")

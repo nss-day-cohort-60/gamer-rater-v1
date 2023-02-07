@@ -1,0 +1,30 @@
+[
+    {
+        "model": "gamerraterapi.category",
+        "pk": 1,
+        "fields": {
+            "label": "Grand Strategy"
+        }
+    },
+    {
+        "model": "gamerraterapi.category",
+        "pk": 2,
+        "fields": {
+            "label": "MMO"
+        }
+    },
+    {
+        "model": "gamerraterapi.category",
+        "pk": 3,
+        "fields": {
+            "label": "Arcade"
+        }
+    },
+    {
+        "model": "gamerraterapi.category",
+        "pk": 4,
+        "fields": {
+            "label": "Board Game"
+        }
+    }
+]

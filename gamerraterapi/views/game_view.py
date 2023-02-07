@@ -3,7 +3,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from gamerraterapi.models import Game, GameCategory
+from gamerraterapi.models import Game, GameCategory, Category
 
 
 class GameView(ViewSet):
@@ -15,7 +15,10 @@ class GameView(ViewSet):
         Returns:
             Response -- JSON serialized game type
         """
-        pass
+        game = Game.objects.get(pk=pk)
+        serializer = GameSerializer(game)
+        return Response(serializer.data)
+
 
     def list(self, request):
         """Handle GET requests to get all game types
@@ -33,11 +36,45 @@ class GameView(ViewSet):
         Returns:
             Response -- JSON serialized dictionary representation of the new game
         """
-        pass
+        new_game = Game()
+        new_game.description = request.data['description']
+        new_game.designer = request.data['designer']
+        new_game.estimated_time = request.data['time']
+        new_game.recommended_age = request.data['age_rating']
+        new_game.min_players = request.data['minimum_players']
+        new_game.max_players = request.data['maximum_players']
+        new_game.title = request.data['title']
+        new_game.year_released = request.data['release_date']
+        new_game.save()
+
+        categories_selected = request.data['categories']
+
+        for category in categories_selected:
+            monkey = GameCategory()
+            monkey.game = new_game #   <--- this is an object instance of a game
+            monkey.category = Category.objects.get(pk = category)#   <--- this is an object instance of a category
+            monkey.save()
+
+        serializer = GameSerializer(new_game)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+
+class GameCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ( 'label', )
+
 
 class GameSerializer(serializers.ModelSerializer):
-    """JSON serializer for game types
-    """
+    """JSON serializer for game types"""
+    categories = GameCategorySerializer(many=True)
+
     class Meta:
         model = Game
-        fields = ('id', 'title')
+        fields = (
+            'id', 'title', 'description', 'designer', 'year_released',
+            'min_players', 'max_players', 'estimated_time', 'recommended_age',
+            'categories'
+        )
+        # depth = 1  # NUCLEAR BOMB OPTION 🧨 💣 🧨
