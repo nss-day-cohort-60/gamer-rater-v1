@@ -1,0 +1,32 @@
+[
+    {
+        "model": "gamerraterapi.game",
+        "pk": 1,
+        "fields": {
+            "player": 1,
+            "title": "Monopoly",
+            "description": "Destroy your enemies financially",
+            "designer": "Hasbro",
+            "year_released": 1930,
+            "min_players": 2,
+            "max_players": 7,
+            "recommended_age": 13,
+            "estimated_time": 8.5
+        }
+    },
+    {
+        "model": "gamerraterapi.game",
+        "pk": 2,
+        "fields": {
+            "player": 1,
+            "title": "Life",
+            "description": "Build a strong financial foundations for your family while destroying your enemies",
+            "designer": "Milton Bradley",
+            "year_released": 1962,
+            "min_players": 2,
+            "max_players": 4,
+            "recommended_age": 8,
+            "estimated_time": 2
+        }
+    }
+]

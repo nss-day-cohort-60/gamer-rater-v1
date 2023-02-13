@@ -1,0 +1,11 @@
+[
+    {
+        "model": "gamerraterapi.player",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "biography": "Delectus suscipit qui rem debitis in et cumque.",
+            "dates_available": "Mon, Wed nights"
+        }
+    }
+]

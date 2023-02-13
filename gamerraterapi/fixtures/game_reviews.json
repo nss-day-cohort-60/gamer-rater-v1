@@ -1,0 +1,20 @@
+[
+    {
+        "model": "gamerraterapi.gamereview",
+        "pk": 1,
+        "fields": {
+            "game": 1,
+            "player": 1,
+            "review": "Illum unde dolor est. Fugit corrupti atque ut. Dolores magnam velit."
+        }
+    },
+    {
+        "model": "gamerraterapi.gamereview",
+        "pk": 2,
+        "fields": {
+            "game": 2,
+            "player": 1,
+            "review": "Unde magnam autem dicta quod velit maxime. Aut dolorem nobis iusto eum omnis. Placeat et nulla. Magnam eos aut unde et doloremque nemo provident. Debitis consequatur aut error esse quam et."
+        }
+    }
+]
