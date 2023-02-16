@@ -7,7 +7,7 @@ from django.db.models import Count, Q, When, Case
 from rest_framework import serializers, status
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
-from gamerraterapi.models import Game, Player
+from gamerraterapi.models import Game, Player, GameReview
 
 
 class GamesView(ViewSet):
@@ -70,11 +70,28 @@ class GamesView(ViewSet):
         return Response(serialized_games.data, status=status.HTTP_200_OK)
 
 
+class PlayerSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Player
+        fields = ( 'id', 'full_name')
+
+
+class GameReviewSerializer(serializers.ModelSerializer):
+    player = PlayerSerializer(many=False)
+
+    class Meta:
+        model = GameReview
+        fields = ( 'id', 'game', 'player', 'date_reviewed', 'review' )
+
+
 class GameSerializer(serializers.ModelSerializer):
     """JSON serializer for games"""
+    game_reviews = GameReviewSerializer(many=True)
 
     class Meta:
         model = Game
-        fields = ('id', 'player', 'title', 'description',
+        fields = ('id', 'player', 'title', 'description', 'game_reviews',
                   'designer', 'year_released', 'min_players',
                   'max_players', 'recommended_age','estimated_time')
+        depth = 1
