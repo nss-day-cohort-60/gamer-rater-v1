@@ -1,7 +1,7 @@
 from django.db import models
 
 class GameCategory(models.Model):
-    game = models.ForeignKey("Game", on_delete=models.CASCADE)
+    game = models.ForeignKey("Game", on_delete=models.CASCADE, related_name='categories')
     category = models.ForeignKey("Category", on_delete=models.CASCADE)
 
     # I do not include _id at the end of the foreign keys because

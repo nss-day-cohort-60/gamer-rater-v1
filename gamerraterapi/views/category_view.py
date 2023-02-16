@@ -1,13 +1,8 @@
 """View module for handling requests about park areas"""
-import re
-from django.core.exceptions import ValidationError
-from django.db.models.fields import BooleanField
-from django.http import HttpResponseServerError
-from django.db.models import Count, Q, When, Case
 from rest_framework import serializers, status
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
-from gamerraterapi.models import Game, Player, Category
+from gamerraterapi.models import Category
 
 
 class CategoryView(ViewSet):
